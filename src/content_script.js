@@ -2,19 +2,23 @@ window.addEventListener("load", inject, false);
 
 function inject(evt) {
     console.log("finding point!");
-    var elem = document.getElementsByClassName("contents");
-
+    
     // create an observer instance
     var observer = new MutationObserver(function (mutations) {
+
+        var elem = document.getElementsByClassName("prt-head-current");
+        if (elem.length == 0 || elem[0].textContent != 'Bookmaker')
+            return;
 
         var areaList = document.querySelectorAll(".lis-area .point");
         if (areaList.length > 0) {
             console.log("found point!");
-            console.log(areaList[0].textContent); // N
-            console.log(areaList[1].textContent); // W
-            console.log(areaList[2].textContent); // E
-            console.log(areaList[3].textContent); // S
-            observer.disconnect();
+            // N W E S
+            console.log(
+                areaList[0].textContent + ',' +
+                areaList[1].textContent + ',' +
+                areaList[2].textContent + ',' +
+                areaList[3].textContent);
             
             // Save it using the Chrome extension storage API.
             var record = {
@@ -55,7 +59,7 @@ function inject(evt) {
     var config = { attributes: true, childList: true, characterData: true };
 
     // pass in the target node, as well as the observer options
-    observer.observe(elem[0], config);
+    observer.observe(document.getElementsByClassName("contents")[0], config);
 
 
 };

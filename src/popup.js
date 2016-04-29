@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Save as file
             chrome.downloads.download({
                 url: 'data:text/plain;base64,' + btoa(bookmakerToCvs(obj.bookmaker)),
-                filename: 'bookmaker.txt'
+                filename: 'bookmaker.csv'
             });
         });
     });
