@@ -1,0 +1,27 @@
+{
+    "name": "GBF BookMaker Logger",
+    "description": "logging current point and export to cvs",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "activeTab",
+        "storage",
+        "downloads",
+        "http://gbf.game.mbga.jp/*"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "content_script.js"
+            ],
+            "matches": [
+                "http://gbf.game.mbga.jp/*"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "Click here!"
+    }
+}
