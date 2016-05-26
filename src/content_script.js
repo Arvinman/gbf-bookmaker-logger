@@ -8,7 +8,8 @@ function inject(evt) {
 
         var elem = document.getElementsByClassName("prt-head-current");
         if (elem.length == 0 ||
-            (elem[0].textContent != 'Bookmaker' && elem[0].textContent != 'Place a Bet'))
+            (elem[0].textContent != 'Bookmaker' && elem[0].textContent != 'Place a Bet' &&
+            elem[0].textContent != 'ブックメーカー' && elem[0].textContent != '勝利エリア予想'))
             return;
 
         var areaList = document.querySelectorAll(".lis-area .point");
@@ -61,7 +62,10 @@ function inject(evt) {
     var config = { attributes: true, childList: true, characterData: true };
 
     // pass in the target node, as well as the observer options
-    observer.observe(document.getElementsByClassName("contents")[0], config);
+    var element = document.getElementsByClassName("contents").length > 0
+        ? document.getElementsByClassName("contents")[0]
+        : document.getElementsByClassName("mobage-game-container")[0];
+    observer.observe(element, config);
 
 
 };
